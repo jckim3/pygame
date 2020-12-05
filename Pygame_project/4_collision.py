@@ -76,7 +76,7 @@ ball_to_remove = -1
 
 #display text
 game_font = pygame.font.Font(None,40)
-total_time = 10
+total_time = 100
 start_ticks = pygame.time.get_ticks()
 
 #event loop
@@ -137,8 +137,6 @@ while running:
 # delect weapon on top
     weapons = [[w[0],w[1]] for w in weapons if w[1] > 0 ]
 
-
-
 #볼 튀는것 그리기
     for ball_idx, ball_val in enumerate(balls):
         ball_pos_x = ball_val["pos_x"]
@@ -188,7 +186,7 @@ while running:
             weapon_pos_y =  weapon_val[1]
             weapon_rect= weapon.get_rect()
             weapon_rect.left= weapon_pos_x
-            weapon_rect.right=weapon_pos_y
+            weapon_rect.top=weapon_pos_y        #bug 수정, Left, Top 임. 
 
             #충돌 쳇크
             if weapon_rect.colliderect(ball_rect):
